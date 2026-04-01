@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sharvari Joshi — Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --ink: #1a1814;
+      --muted: #7a7468;
+      --accent: #c9a96e;
+      --accent-light: #e8d9bc;
+      --border: #ddd5c4;
+      --surface: #ede8de;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(245, 240, 232, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 4rem 6rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.35s forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s forwards;
+    }
+
+    .hero-tagline {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--ink);
+      max-width: 520px;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+      border: 1px solid var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      background: var(--surface);
+    }
+
+    .hero-line {
+      position: absolute;
+      right: 4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+      opacity: 0;
+      animation: fadeIn 1.5s 1s forwards;
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 3.5rem;
+      line-height: 1.1;
+    }
+
+    .section-title em { font-style: italic; color: var(--muted); }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1100px;
+    }
+
+    .about-text p {
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--cream);
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { max-width: 900px; margin: 0 auto; padding: 6rem 4rem; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .exp-item.visible { opacity: 1; transform: translateY(0); }
+
+    .exp-meta {
+      padding-top: 0.2rem;
+    }
+
+    .exp-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .exp-role {
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .exp-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-transform: uppercase;
+      background: var(--surface);
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+    }
+
+    .skill-category {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .skill-category:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .skill-cat-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink);
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-list li::before {
+      content: '—';
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { max-width: 1100px; margin: 0 auto; padding: 6rem 4rem; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s, border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .project-card.visible { opacity: 1; transform: translateY(0); }
+    .project-card:hover { border-color: var(--accent); }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.4s;
+    }
+
+    .project-card:hover::before { height: 100%; }
+
+    .project-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .project-desc {
+      font-size: 0.98rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.3s;
+    }
+
+    .project-link:hover { color: var(--accent); }
+    .project-link::after { content: '→'; }
+
+    /* ── CONTACT / FOOTER ── */
+    #contact {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 6rem 4rem;
+      text-align: center;
+    }
+
+    #contact .section-label { color: var(--accent); }
+
+    .contact-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-title em { font-style: italic; color: var(--accent); }
+
+    .contact-sub {
+      font-size: 1.1rem;
+      color: #a09a90;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border: 1px solid #3a3630;
+      transition: all 0.3s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #2a2620;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: #5a5450;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 0.6; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { gap: 1.5rem; }
+      section, #experience, #projects { padding: 5rem 2rem; }
+      #hero { padding: 8rem 2rem 5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .hero-line { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Sharvari Joshi</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-eyebrow">Data Scientist &amp; ML Engineer</p>
+    <h1 class="hero-name">Sharvari<br><em>Joshi</em></h1>
+    <p class="hero-title">Data Scientist</p>
+    <p class="hero-tagline">I build intelligent systems that turn messy data into real-world impact.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+    <div class="hero-line"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">01 — About</p>
+    <h2 class="section-title">Data-driven.<br><em>Impact-obsessed.</em></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Data Scientist with a passion for transforming complex, unstructured data into systems that actually work in the real world. My work sits at the intersection of machine learning, statistical analysis, and thoughtful engineering.</p>
+        <p>Whether it's building end-to-end ML pipelines, fine-tuning large language models, or surfacing insights that change how teams make decisions — I'm drawn to problems where the stakes are real.</p>
+        <p>I believe the best models are the ones that earn trust: interpretable, robust, and built with the people who will use them in mind.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">ML Models Deployed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Projects Shipped</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Curiosity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="max-width:900px;margin:0 auto;">
+    <p class="section-label">02 — Experience</p>
+    <h2 class="section-title">Where I've<br><em>worked</em></h2>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">2023 — Present</div>
+        <div class="exp-company">Company Name</div>
+      </div>
+      <div>
+        <div class="exp-role">Senior Data Scientist</div>
+        <p class="exp-desc">Led development of predictive models that improved operational efficiency by 30%. Designed and maintained end-to-end ML pipelines for production deployment. Collaborated with cross-functional teams to translate business needs into data solutions.</p>
+        <div class="exp-tags">
+          <span class="tag">Python</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">MLflow</span>
+          <span class="tag">AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">2021 — 2023</div>
+        <div class="exp-company">Company Name</div>
+      </div>
+      <div>
+        <div class="exp-role">Data Scientist</div>
+        <p class="exp-desc">Built NLP pipelines for text classification and sentiment analysis at scale. Developed dashboards and reporting tools used by leadership for strategic planning. Reduced model inference latency by 40% through optimization.</p>
+        <div class="exp-tags">
+          <span class="tag">NLP</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Tableau</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">2020 — 2021</div>
+        <div class="exp-company">Company Name</div>
+      </div>
+      <div>
+        <div class="exp-role">Data Analyst / ML Intern</div>
+        <p class="exp-desc">Performed exploratory data analysis on large datasets to surface actionable insights. Assisted in building and evaluating baseline ML models for churn prediction. Automated recurring reporting workflows saving 10+ hours per week.</p>
+        <div class="exp-tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">03 — Skills</p>
+    <h2 class="section-title">Tools of<br><em>the trade</em></h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-title">Machine Learning</div>
+        <ul class="skill-list">
+          <li>Supervised &amp; Unsupervised Learning</li>
+          <li>Deep Learning (CNNs, RNNs, Transformers)</li>
+          <li>Large Language Models (LLMs)</li>
+          <li>Model Fine-tuning &amp; RLHF</li>
+          <li>Feature Engineering</li>
+          <li>Model Interpretability (SHAP, LIME)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Languages &amp; Frameworks</div>
+        <ul class="skill-list">
+          <li>Python (Advanced)</li>
+          <li>PyTorch &amp; TensorFlow</li>
+          <li>Scikit-learn &amp; XGBoost</li>
+          <li>HuggingFace Transformers</li>
+          <li>SQL / NoSQL</li>
+          <li>R (Statistical Analysis)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Data &amp; Infrastructure</div>
+        <ul class="skill-list">
+          <li>MLflow &amp; Weights &amp; Biases</li>
+          <li>Apache Spark &amp; Kafka</li>
+          <li>AWS / GCP (SageMaker, Vertex AI)</li>
+          <li>Docker &amp; Kubernetes</li>
+          <li>dbt &amp; Airflow</li>
+          <li>Tableau &amp; Power BI</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="max-width:1100px;margin:0 auto;">
+    <p class="section-label">04 — Projects</p>
+    <h2 class="section-title">Selected<br><em>work</em></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-number">Project 01</div>
+        <div class="project-title">LLM-Powered Document Intelligence</div>
+        <p class="project-desc">Built a retrieval-augmented generation (RAG) system to query large internal document repositories. Reduced time-to-answer for analysts from hours to seconds using semantic search and GPT-4 fine-tuning.</p>
+        <div class="exp-tags" style="margin-bottom:1.2rem;">
+          <span class="tag">LangChain</span><span class="tag">OpenAI</span><span class="tag">FAISS</span><span class="tag">FastAPI</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 02</div>
+        <div class="project-title">Real-Time Anomaly Detection Pipeline</div>
+        <p class="project-desc">Designed an unsupervised anomaly detection system for streaming sensor data. Deployed on AWS with sub-100ms latency, catching critical failures before they escalated in a manufacturing context.</p>
+        <div class="exp-tags" style="margin-bottom:1.2rem;">
+          <span class="tag">Kafka</span><span class="tag">Isolation Forest</span><span class="tag">AWS</span><span class="tag">Grafana</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 03</div>
+        <div class="project-title">Customer Churn Prediction Engine</div>
+        <p class="project-desc">End-to-end ML system predicting customer churn with 89% AUC. Included automated retraining, SHAP-based explanations for the business team, and a Streamlit dashboard for real-time scoring.</p>
+        <div class="exp-tags" style="margin-bottom:1.2rem;">
+          <span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">Streamlit</span><span class="tag">MLflow</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 04</div>
+        <div class="project-title">Medical Image Classification</div>
+        <p class="project-desc">Fine-tuned a Vision Transformer (ViT) on radiology images to assist in diagnostic triage. Achieved 94% accuracy on a held-out test set, with Grad-CAM visualizations for clinical interpretability.</p>
+        <div class="exp-tags" style="margin-bottom:1.2rem;">
+          <span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">Grad-CAM</span><span class="tag">HuggingFace</span>
+        </div>
+        <a href="#" class="project-link">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">05 — Contact</p>
+    <h2 class="contact-title">Let's build something<br><em>worth building</em></h2>
+    <p class="contact-sub">Open to collaborations, opportunities, and interesting problems.</p>
+    <div class="contact-links">
+      <a href="mailto:sharvari@email.com" class="contact-link">Email</a>
+      <a href="https://linkedin.com/in/sharvarijoshi" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/sharvarijoshi" target="_blank" class="contact-link">GitHub</a>
+      <a href="#" class="contact-link">Download CV</a>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Sharvari Joshi — Crafted with intention
+    </div>
+  </section>
+
+  <script>
+    // Scroll-triggered reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
+
+    // Stagger project cards
+    document.querySelectorAll('.project-card').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 0.1}s`;
+    });
+
+    document.querySelectorAll('.exp-item').forEach((item, i) => {
+      item.style.transitionDelay = `${i * 0.1}s`;
+    });
+  </script>
+</body>
+</html>
