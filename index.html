@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sharvari Joshi — Data Scientist</title>
+  <title>Sharvari Joshi — Data Scientist & ML Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -40,7 +39,6 @@
       opacity: 0.4;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -82,7 +80,7 @@
 
     .nav-links a:hover { color: var(--ink); }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -113,10 +111,7 @@
       animation: fadeUp 0.9s 0.35s forwards;
     }
 
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    .hero-name em { font-style: italic; color: var(--accent); }
 
     .hero-title {
       font-size: clamp(1.4rem, 3vw, 2.2rem);
@@ -159,27 +154,10 @@
       display: inline-block;
     }
 
-    .btn-primary {
-      background: var(--ink);
-      color: var(--cream);
-      border: 1px solid var(--ink);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--ink);
-    }
-
-    .btn-ghost {
-      border: 1px solid var(--border);
-      color: var(--ink);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--ink);
-      background: var(--surface);
-    }
+    .btn-primary { background: var(--ink); color: var(--cream); border: 1px solid var(--ink); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--ink); background: var(--surface); }
 
     .hero-line {
       position: absolute;
@@ -193,11 +171,7 @@
       animation: fadeIn 1.5s 1s forwards;
     }
 
-    /* ── SECTION COMMON ── */
-    section {
-      padding: 6rem 4rem;
-      position: relative;
-    }
+    section { padding: 6rem 4rem; position: relative; }
 
     .section-label {
       font-family: 'DM Mono', monospace;
@@ -218,14 +192,7 @@
 
     .section-title em { font-style: italic; color: var(--muted); }
 
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: var(--accent);
-      margin-bottom: 3.5rem;
-    }
-
-    /* ── ABOUT ── */
+    /* ABOUT */
     #about {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -275,7 +242,7 @@
       color: var(--muted);
     }
 
-    /* ── EXPERIENCE ── */
+    /* EXPERIENCE */
     #experience { max-width: 900px; margin: 0 auto; padding: 6rem 4rem; }
 
     .exp-item {
@@ -290,45 +257,12 @@
     }
 
     .exp-item.visible { opacity: 1; transform: translateY(0); }
+    .exp-period { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .exp-company { font-size: 0.9rem; font-weight: 400; color: var(--accent); }
+    .exp-role { font-size: 1.35rem; font-weight: 400; margin-bottom: 0.8rem; letter-spacing: 0.01em; }
+    .exp-desc { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.7; }
 
-    .exp-meta {
-      padding-top: 0.2rem;
-    }
-
-    .exp-period {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .exp-company {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--accent);
-    }
-
-    .exp-role {
-      font-size: 1.35rem;
-      font-weight: 400;
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.01em;
-    }
-
-    .exp-desc {
-      font-size: 1rem;
-      color: var(--muted);
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    .exp-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 
     .tag {
       font-family: 'DM Mono', monospace;
@@ -341,12 +275,8 @@
       background: var(--surface);
     }
 
-    /* ── SKILLS ── */
-    #skills {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    /* SKILLS */
+    #skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
     .skills-grid {
       display: grid;
@@ -362,10 +292,7 @@
       transition: border-color 0.3s, transform 0.3s;
     }
 
-    .skill-category:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
+    .skill-category:hover { border-color: var(--accent); transform: translateY(-3px); }
 
     .skill-cat-title {
       font-family: 'DM Mono', monospace;
@@ -378,9 +305,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .skill-list {
-      list-style: none;
-    }
+    .skill-list { list-style: none; }
 
     .skill-list li {
       font-size: 1rem;
@@ -392,13 +317,9 @@
       gap: 0.6rem;
     }
 
-    .skill-list li::before {
-      content: '—';
-      color: var(--accent);
-      font-size: 0.8rem;
-    }
+    .skill-list li::before { content: '—'; color: var(--accent); font-size: 0.8rem; }
 
-    /* ── PROJECTS ── */
+    /* PROJECTS */
     #projects { max-width: 1100px; margin: 0 auto; padding: 6rem 4rem; }
 
     .projects-grid {
@@ -412,11 +333,9 @@
       padding: 2.5rem;
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s, transform 0.6s, border-color 0.3s;
-      cursor: pointer;
     }
 
     .project-card.visible { opacity: 1; transform: translateY(0); }
@@ -434,28 +353,9 @@
 
     .project-card:hover::before { height: 100%; }
 
-    .project-number {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .project-title {
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.01em;
-    }
-
-    .project-desc {
-      font-size: 0.98rem;
-      color: var(--muted);
-      font-weight: 300;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
+    .project-number { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+    .project-title { font-size: 1.4rem; font-weight: 400; margin-bottom: 0.8rem; letter-spacing: 0.01em; }
+    .project-desc { font-size: 0.98rem; color: var(--muted); font-weight: 300; line-height: 1.7; margin-bottom: 1.5rem; }
 
     .project-link {
       font-family: 'DM Mono', monospace;
@@ -473,7 +373,7 @@
     .project-link:hover { color: var(--accent); }
     .project-link::after { content: '→'; }
 
-    /* ── CONTACT / FOOTER ── */
+    /* CONTACT */
     #contact {
       background: var(--ink);
       color: var(--cream);
@@ -491,13 +391,7 @@
     }
 
     .contact-title em { font-style: italic; color: var(--accent); }
-
-    .contact-sub {
-      font-size: 1.1rem;
-      color: #a09a90;
-      margin-bottom: 3rem;
-      font-weight: 300;
-    }
+    .contact-sub { font-size: 1.1rem; color: #a09a90; margin-bottom: 3rem; font-weight: 300; }
 
     .contact-links {
       display: flex;
@@ -518,10 +412,7 @@
       transition: all 0.3s;
     }
 
-    .contact-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 
     .footer-bottom {
       margin-top: 5rem;
@@ -533,7 +424,6 @@
       color: #5a5450;
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -544,7 +434,6 @@
       to   { opacity: 0.6; }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 2rem; }
       .nav-links { gap: 1.5rem; }
@@ -566,7 +455,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">Sharvari Joshi</a>
     <ul class="nav-links">
@@ -580,10 +468,10 @@
 
   <!-- HERO -->
   <section id="hero">
-    <p class="hero-eyebrow">Data Scientist &amp; ML Engineer</p>
+    <p class="hero-eyebrow">Data Scientist &amp; ML Engineer · Pune, India</p>
     <h1 class="hero-name">Sharvari<br><em>Joshi</em></h1>
-    <p class="hero-title">Data Scientist</p>
-    <p class="hero-tagline">I build intelligent systems that turn messy data into real-world impact.</p>
+    <p class="hero-title">Data Scientist &amp; ML Engineer</p>
+    <p class="hero-tagline">I build end-to-end intelligent systems — from raw data pipelines to deployed ML models — that turn messy data into real-world impact.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
       <a href="#contact" class="btn btn-ghost">Get in Touch</a>
@@ -597,22 +485,22 @@
     <h2 class="section-title">Data-driven.<br><em>Impact-obsessed.</em></h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm a Data Scientist with a passion for transforming complex, unstructured data into systems that actually work in the real world. My work sits at the intersection of machine learning, statistical analysis, and thoughtful engineering.</p>
-        <p>Whether it's building end-to-end ML pipelines, fine-tuning large language models, or surfacing insights that change how teams make decisions — I'm drawn to problems where the stakes are real.</p>
-        <p>I believe the best models are the ones that earn trust: interpretable, robust, and built with the people who will use them in mind.</p>
+        <p>I'm an engineer transitioning into data science and ML, with hands-on experience building production-grade pipelines, NLP applications, and AI-powered automation tools. My work spans the full data stack — from ingestion and transformation to model training and deployment.</p>
+        <p>Currently at Tata Motors in Pune, I apply analytical thinking to large-scale operational data. Outside of work, I build: customer analytics platforms, churn prediction engines, NLP-based resume analyzers, and HR automation chatbots — all live on GitHub.</p>
+        <p>I'm drawn to problems where data can genuinely change how decisions are made — and I care about building models that are interpretable and trustworthy, not just accurate.</p>
       </div>
       <div class="about-stats">
         <div class="stat-item">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Years of Experience</div>
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Projects Shipped</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">10+</div>
+          <div class="stat-number">3</div>
           <div class="stat-label">ML Models Deployed</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Projects Shipped</div>
+          <div class="stat-number">4</div>
+          <div class="stat-label">Companies Worked At</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">∞</div>
@@ -629,53 +517,69 @@
 
     <div class="exp-item">
       <div class="exp-meta">
-        <div class="exp-period">2023 — Present</div>
-        <div class="exp-company">Company Name</div>
+        <div class="exp-period">Sept 2024 — Present</div>
+        <div class="exp-company">Tata Motors Ltd.</div>
       </div>
       <div>
-        <div class="exp-role">Senior Data Scientist</div>
-        <p class="exp-desc">Led development of predictive models that improved operational efficiency by 30%. Designed and maintained end-to-end ML pipelines for production deployment. Collaborated with cross-functional teams to translate business needs into data solutions.</p>
+        <div class="exp-role">Engineer — Network Management &amp; Expansion</div>
+        <p class="exp-desc">Supporting network planning and expansion at one of India's largest automotive enterprises. Involved in structured data collection, operational reporting, and cross-functional process documentation at enterprise scale.</p>
         <div class="exp-tags">
-          <span class="tag">Python</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">MLflow</span>
-          <span class="tag">AWS</span>
+          <span class="tag">Data Reporting</span>
+          <span class="tag">Process Documentation</span>
+          <span class="tag">Enterprise Operations</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-meta">
-        <div class="exp-period">2021 — 2023</div>
-        <div class="exp-company">Company Name</div>
+        <div class="exp-period">Jun 2024 — Sept 2024</div>
+        <div class="exp-company">General Mills</div>
       </div>
       <div>
-        <div class="exp-role">Data Scientist</div>
-        <p class="exp-desc">Built NLP pipelines for text classification and sentiment analysis at scale. Developed dashboards and reporting tools used by leadership for strategic planning. Reduced model inference latency by 40% through optimization.</p>
+        <div class="exp-role">SC Analyst (Supply Chain)</div>
+        <p class="exp-desc">Built Tableau dashboards with SQL backend to support supply chain reporting and decision-making. Implemented automation strategies to reduce manual effort in recurring reporting workflows.</p>
         <div class="exp-tags">
-          <span class="tag">NLP</span>
-          <span class="tag">Scikit-learn</span>
-          <span class="tag">SQL</span>
           <span class="tag">Tableau</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Supply Chain Analytics</span>
+          <span class="tag">Automation</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-meta">
-        <div class="exp-period">2020 — 2021</div>
-        <div class="exp-company">Company Name</div>
+        <div class="exp-period">Aug 2023 — Jun 2024</div>
+        <div class="exp-company">Zephdroids</div>
       </div>
       <div>
-        <div class="exp-role">Data Analyst / ML Intern</div>
-        <p class="exp-desc">Performed exploratory data analysis on large datasets to surface actionable insights. Assisted in building and evaluating baseline ML models for churn prediction. Automated recurring reporting workflows saving 10+ hours per week.</p>
+        <div class="exp-role">Business &amp; Operations Intern</div>
+        <p class="exp-desc">Drone manufacturing startup. Strategised a business model, built a company database, and carried out market research and data-driven analysis to identify new business opportunities.</p>
         <div class="exp-tags">
-          <span class="tag">Pandas</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">Excel</span>
+          <span class="tag">Market Research</span>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">Database Design</span>
         </div>
       </div>
     </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2024 — Aug 2024</div>
+        <div class="exp-company">Anshuman Tech Pvt. Ltd.</div>
+      </div>
+      <div>
+        <div class="exp-role">Intern — CT &amp; Production</div>
+        <p class="exp-desc">Manufactured and tested DIO cards for XPO-kits. Carried out component assembly and microcontroller testing (8051, 8085, 8086).</p>
+        <div class="exp-tags">
+          <span class="tag">Embedded Systems</span>
+          <span class="tag">Microcontrollers</span>
+          <span class="tag">Hardware Testing</span>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- SKILLS -->
@@ -684,36 +588,36 @@
     <h2 class="section-title">Tools of<br><em>the trade</em></h2>
     <div class="skills-grid">
       <div class="skill-category">
-        <div class="skill-cat-title">Machine Learning</div>
+        <div class="skill-cat-title">Machine Learning &amp; AI</div>
         <ul class="skill-list">
-          <li>Supervised &amp; Unsupervised Learning</li>
-          <li>Deep Learning (CNNs, RNNs, Transformers)</li>
-          <li>Large Language Models (LLMs)</li>
-          <li>Model Fine-tuning &amp; RLHF</li>
-          <li>Feature Engineering</li>
-          <li>Model Interpretability (SHAP, LIME)</li>
+          <li>scikit-learn · Logistic Regression · KMeans</li>
+          <li>Facebook Prophet (Time Series)</li>
+          <li>Hugging Face Transformers · BERT</li>
+          <li>NLP · NER · Text Classification</li>
+          <li>RFM Segmentation · Churn Modelling</li>
+          <li>Feature Engineering · Model Evaluation</li>
         </ul>
       </div>
       <div class="skill-category">
         <div class="skill-cat-title">Languages &amp; Frameworks</div>
         <ul class="skill-list">
           <li>Python (Advanced)</li>
-          <li>PyTorch &amp; TensorFlow</li>
-          <li>Scikit-learn &amp; XGBoost</li>
-          <li>HuggingFace Transformers</li>
-          <li>SQL / NoSQL</li>
-          <li>R (Statistical Analysis)</li>
+          <li>SQL · DuckDB</li>
+          <li>Flask · REST API · Webhooks</li>
+          <li>Dialogflow (NLU)</li>
+          <li>Java · C · Embedded C</li>
+          <li>Git · Regex · joblib</li>
         </ul>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title">Data &amp; Infrastructure</div>
+        <div class="skill-cat-title">Data &amp; Visualization</div>
         <ul class="skill-list">
-          <li>MLflow &amp; Weights &amp; Biases</li>
-          <li>Apache Spark &amp; Kafka</li>
-          <li>AWS / GCP (SageMaker, Vertex AI)</li>
-          <li>Docker &amp; Kubernetes</li>
-          <li>dbt &amp; Airflow</li>
-          <li>Tableau &amp; Power BI</li>
+          <li>dbt · Data Pipelines · ETL</li>
+          <li>Pandas · NumPy · Faker</li>
+          <li>Streamlit · Plotly · Matplotlib</li>
+          <li>Tableau · Business Intelligence</li>
+          <li>ReportLab · PDF Automation</li>
+          <li>pdfminer.six · docx2txt</li>
         </ul>
       </div>
     </div>
@@ -724,45 +628,65 @@
     <p class="section-label">04 — Projects</p>
     <h2 class="section-title">Selected<br><em>work</em></h2>
     <div class="projects-grid">
+
       <div class="project-card">
         <div class="project-number">Project 01</div>
-        <div class="project-title">LLM-Powered Document Intelligence</div>
-        <p class="project-desc">Built a retrieval-augmented generation (RAG) system to query large internal document repositories. Reduced time-to-answer for analysts from hours to seconds using semantic search and GPT-4 fine-tuning.</p>
+        <div class="project-title">E-Commerce Revenue Intelligence Platform</div>
+        <p class="project-desc">Full production-grade data stack: raw ingestion → DuckDB warehouse → layered dbt transforms → RFM/KMeans customer segmentation → churn model (AUC-ROC > 0.75) → Prophet revenue forecast → 4-page Streamlit dashboard + automated weekly PDF reports. Champions segment identified with 3× higher average LTV.</p>
         <div class="exp-tags" style="margin-bottom:1.2rem;">
-          <span class="tag">LangChain</span><span class="tag">OpenAI</span><span class="tag">FAISS</span><span class="tag">FastAPI</span>
+          <span class="tag">DuckDB</span><span class="tag">dbt</span><span class="tag">scikit-learn</span><span class="tag">Prophet</span><span class="tag">Streamlit</span>
         </div>
-        <a href="#" class="project-link">View Project</a>
+        <a href="https://ecommerce-intelligence-1.streamlit.app/" target="_blank" class="project-link">Live Demo</a>
+        &nbsp;&nbsp;
+        <a href="https://github.com/shaarvarij/ecommerce-intelligence" target="_blank" class="project-link">GitHub</a>
       </div>
 
       <div class="project-card">
         <div class="project-number">Project 02</div>
-        <div class="project-title">Real-Time Anomaly Detection Pipeline</div>
-        <p class="project-desc">Designed an unsupervised anomaly detection system for streaming sensor data. Deployed on AWS with sub-100ms latency, catching critical failures before they escalated in a manufacturing context.</p>
+        <div class="project-title">Customer Churn Prediction App</div>
+        <p class="project-desc">Deployed ML application serving real-time churn probability scores. scikit-learn classification model with StandardScaler and one-hot encoded inputs, serialized via joblib. Users input tenure, contract type, and payment method to get live churn risk and probability score.</p>
         <div class="exp-tags" style="margin-bottom:1.2rem;">
-          <span class="tag">Kafka</span><span class="tag">Isolation Forest</span><span class="tag">AWS</span><span class="tag">Grafana</span>
+          <span class="tag">scikit-learn</span><span class="tag">joblib</span><span class="tag">Streamlit</span><span class="tag">Feature Engineering</span>
         </div>
-        <a href="#" class="project-link">View Project</a>
+        <a href="https://github.com/shaarvarij/Customer-understating-ML-model-" target="_blank" class="project-link">GitHub</a>
       </div>
 
       <div class="project-card">
         <div class="project-number">Project 03</div>
-        <div class="project-title">Customer Churn Prediction Engine</div>
-        <p class="project-desc">End-to-end ML system predicting customer churn with 89% AUC. Included automated retraining, SHAP-based explanations for the business team, and a Streamlit dashboard for real-time scoring.</p>
+        <div class="project-title">AI-Powered HR Automation Chatbot</div>
+        <p class="project-desc">Web-based HR chatbot using Google Dialogflow for NLU, automating leave applications, onboarding, and exit formalities. Flask backend exposes a REST webhook endpoint, processes intents, and persists data to SQLite — demonstrating full API development and conversational AI integration.</p>
         <div class="exp-tags" style="margin-bottom:1.2rem;">
-          <span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">Streamlit</span><span class="tag">MLflow</span>
+          <span class="tag">Dialogflow</span><span class="tag">Flask</span><span class="tag">REST API</span><span class="tag">SQLite</span><span class="tag">NLU</span>
         </div>
-        <a href="#" class="project-link">View Project</a>
+        <a href="https://github.com/shaarvarij/Chatbot-HR-automation" target="_blank" class="project-link">GitHub</a>
       </div>
 
       <div class="project-card">
         <div class="project-number">Project 04</div>
-        <div class="project-title">Medical Image Classification</div>
-        <p class="project-desc">Fine-tuned a Vision Transformer (ViT) on radiology images to assist in diagnostic triage. Achieved 94% accuracy on a held-out test set, with Grad-CAM visualizations for clinical interpretability.</p>
+        <div class="project-title">AI Resume Analyzer &amp; Job-Match App</div>
+        <p class="project-desc">NLP-powered resume parser using BERT NER (bert-large-cased-finetuned-conll03) to extract structured information from PDF and DOCX files. Implements transformer-based job-description matching to score resume-to-role fit. Deployed as an interactive Streamlit app.</p>
         <div class="exp-tags" style="margin-bottom:1.2rem;">
-          <span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">Grad-CAM</span><span class="tag">HuggingFace</span>
+          <span class="tag">BERT</span><span class="tag">Hugging Face</span><span class="tag">NLP</span><span class="tag">Streamlit</span><span class="tag">pdfminer</span>
         </div>
-        <a href="#" class="project-link">View Project</a>
+        <a href="https://github.com/shaarvarij/AI-based-Resume-analyzer" target="_blank" class="project-link">GitHub</a>
       </div>
+
+      <div class="project-card">
+        <div class="project-number">Project 05</div>
+        <div class="project-title">Sales Performance Dashboard</div>
+        <p class="project-desc">Interactive Tableau dashboard analysing monthly sales trends, regional performance, and product-level profit margins across multiple business dimensions. Applied data storytelling principles to surface actionable insights for stakeholders. Supplemented with Python EDA using Plotly and Pandas.</p>
+        <div class="exp-tags" style="margin-bottom:1.2rem;">
+          <span class="tag">Tableau</span><span class="tag">Plotly</span><span class="tag">Pandas</span><span class="tag">EDA</span>
+        </div>
+        <a href="https://github.com/shaarvarij/Tableau-Sales-Dashboard---Sales-Insights" target="_blank" class="project-link">GitHub</a>
+      </div>
+
+      <div class="project-card" style="border-style: dashed; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:300px;">
+        <div class="project-number" style="margin-bottom:0.5rem;">Coming Soon</div>
+        <div class="project-title" style="font-size:1.1rem; color:var(--muted);">RAG Chatbot &amp; FastAPI Model Serving</div>
+        <p class="project-desc" style="margin-bottom:0; font-size:0.9rem;">LangChain + LLM + FAISS vector search &amp; scikit-learn model wrapped in a FastAPI REST endpoint with Docker.</p>
+      </div>
+
     </div>
   </section>
 
@@ -770,31 +694,25 @@
   <section id="contact">
     <p class="section-label">05 — Contact</p>
     <h2 class="contact-title">Let's build something<br><em>worth building</em></h2>
-    <p class="contact-sub">Open to collaborations, opportunities, and interesting problems.</p>
+    <p class="contact-sub">Open to AI/ML Engineer and Data Scientist roles. Based in Pune — open to Bangalore, Hyderabad, and remote.</p>
     <div class="contact-links">
-      <a href="mailto:sharvari@email.com" class="contact-link">Email</a>
-      <a href="https://linkedin.com/in/sharvarijoshi" target="_blank" class="contact-link">LinkedIn</a>
-      <a href="https://github.com/sharvarijoshi" target="_blank" class="contact-link">GitHub</a>
-      <a href="#" class="contact-link">Download CV</a>
+      <a href="mailto:sharvarisjoshi09@gmail.com" class="contact-link">Email</a>
+      <a href="https://linkedin.com/in/shaarvari-joshi" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/shaarvarij" target="_blank" class="contact-link">GitHub</a>
+      <a href="https://ecommerce-intelligence-1.streamlit.app/" target="_blank" class="contact-link">Live Demo</a>
     </div>
     <div class="footer-bottom">
-      © 2026 Sharvari Joshi — Crafted with intention
+      © 2026 Sharvari Joshi — Built with data, deployed with intention
     </div>
   </section>
 
   <script>
-    // Scroll-triggered reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) {
-          el.target.classList.add('visible');
-        }
-      });
+      entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
 
-    // Stagger project cards
     document.querySelectorAll('.project-card').forEach((card, i) => {
       card.style.transitionDelay = `${i * 0.1}s`;
     });
